@@ -1,0 +1,133 @@
+# Maintainer: Mikata Riko <sanbikappa at qq dot com>
+
+declare -Ii FACEFUSION_INSTALL_SELECT
+_FACEFUSION_PYTHON_VERSION="3.12"
+_FACEFUSION_PIP_VERSION="25.0"
+
+pkgbase='facefusion'
+if [[ "$FACEFUSION_INSTALL_SELECT" =~ ^(cpu|cuda|rocm|openvino)$ ]]; then
+    pkgname=("${pkgbase}"-"$FACEFUSION_INSTALL_SELECT")
+else
+    pkgname=(
+        "${pkgbase}-cpu"
+        "${pkgbase}-cuda"
+        "${pkgbase}-rocm"
+        "${pkgbase}-openvino"
+    )
+fi
+
+pkgver=3.6.0
+pkgrel=1
+_pkgdesc="Industry leading face manipulation platform"
+arch=('x86_64')
+license=('custom')
+url="https://github.com/facefusion/facefusion"
+depends=('miniconda3' 'ffmpeg')
+makedepends=('python-conda-pack')
+options=(!debug)
+source=(
+    "https://github.com/facefusion/facefusion/archive/refs/tags/${pkgver}.tar.gz"
+    "facefusion.sh"
+)
+sha256sums=(
+    "SKIP"
+    "SKIP"
+)
+#install="${pkgbase}-install"
+
+prepare() {
+    rm -rf facefusion
+    mv facefusion-"${pkgver}" facefusion
+    rm -rf facefusion/.github
+
+    cat > facefusion_version << EOF
+FACEFUSION_INSTALL_VERSION=${pkgver}
+FACEFUSION_PYTHON_VERSION=${_FACEFUSION_PYTHON_VERSION}
+FACEFUSION_PIP_VERSION=${_FACEFUSION_PIP_VERSION}
+EOF
+}
+
+#build() {}
+
+package_facefusion-cpu() {
+    pkgdesc="$_pkgdesc (CPU only)"
+    provides=("${pkgbase}=${pkgver}")
+    conflicts=("${pkgbase}")
+
+    cd "${srcdir}"
+    rm -rf facefusion-cpu
+    mkdir facefusion-cpu
+
+    cp facefusion_version facefusion-cpu/
+    echo "FACEFUSION_INSTALL_SELECT=cpu" >> facefusion-cpu/facefusion_version
+
+    install -Dm755 facefusion.sh "${pkgdir}/opt/facefusion/facefusion.sh"
+    mkdir -p "${pkgdir}"/usr/bin
+    ln -s /opt/facefusion/facefusion.sh "${pkgdir}"/usr/bin/facefusion
+    cp -r facefusion "${pkgdir}"/opt/facefusion/
+    mv facefusion-cpu/* "${pkgdir}"/opt/facefusion/
+
+}
+
+package_facefusion-cuda() {
+    pkgdesc="$_pkgdesc (with CUDA)"
+    provides=("${pkgbase}=${pkgver}")
+    conflicts=("${pkgbase}")
+    replaces=("${pkgbase}")
+
+    cd "${srcdir}"
+    rm -rf facefusion-cuda
+    mkdir facefusion-cuda
+
+    cp facefusion_version facefusion-cuda/
+    echo "FACEFUSION_INSTALL_SELECT=cuda" >> facefusion-cuda/facefusion_version
+
+    install -Dm755 facefusion.sh "${pkgdir}/opt/facefusion/facefusion.sh"
+    mkdir -p "${pkgdir}"/usr/bin
+    ln -s /opt/facefusion/facefusion.sh "${pkgdir}"/usr/bin/facefusion
+    cp -r facefusion "${pkgdir}"/opt/facefusion/
+    mv facefusion-cuda/* "${pkgdir}"/opt/facefusion/
+
+}
+
+package_facefusion-rocm() {
+    pkgdesc="$_pkgdesc (with ROCm)"
+    provides=("${pkgbase}=${pkgver}")
+    conflicts=("${pkgbase}")
+    replaces=("${pkgbase}")
+
+    cd "${srcdir}"
+    rm -rf facefusion-rocm
+    mkdir facefusion-rocm
+
+    cp facefusion_version facefusion-rocm/
+    echo "FACEFUSION_INSTALL_SELECT=rocm" >> facefusion-rocm/facefusion_version
+
+    install -Dm755 facefusion.sh "${pkgdir}/opt/facefusion/facefusion.sh"
+    mkdir -p "${pkgdir}"/usr/bin
+    ln -s /opt/facefusion/facefusion.sh "${pkgdir}"/usr/bin/facefusion
+    cp -r facefusion "${pkgdir}"/opt/facefusion/
+    mv facefusion-rocm/* "${pkgdir}"/opt/facefusion/
+
+}
+
+package_facefusion-openvino() {
+    pkgdesc="$_pkgdesc (with OpenVINO)"
+    provides=("${pkgbase}=${pkgver}")
+    conflicts=("${pkgbase}")
+    replaces=("${pkgbase}")
+
+    cd "${srcdir}"
+    rm -rf facefusion-openvion
+    mkdir facefusion-openvion
+
+    cp facefusion_version facefusion-openvion/
+    echo "FACEFUSION_INSTALL_SELECT=openvion" >> facefusion-openvion/facefusion_version
+
+    install -Dm755 facefusion.sh "${pkgdir}/opt/facefusion/facefusion.sh"
+    mkdir -p "${pkgdir}"/usr/bin
+    ln -s /opt/facefusion/facefusion.sh "${pkgdir}"/usr/bin/facefusion
+    cp -r facefusion "${pkgdir}"/opt/facefusion/
+    mv facefusion-openvion/* "${pkgdir}"/opt/facefusion/
+
+}
