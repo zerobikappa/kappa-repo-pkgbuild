@@ -10,8 +10,10 @@ pkgbase = facefusion
 	options = !debug
 	source = https://github.com/facefusion/facefusion/archive/refs/tags/3.6.0.tar.gz
 	source = facefusion.sh
+	source = facefusion-nsfw.patch
 	sha256sums = 1aad82aa7368ee032a649091e0e4fd5fefe1ff5d669c0964fc9491a70c02f23b
 	sha256sums = bcd604f284e4d3053d3d3e9b771ba7ef776388df165f59e29cc5742d365afefb
+	sha256sums = 46839d1f15517771e29afe75001d9bf62f0f769be3faad0dcc5425a655de8cc3
 
 pkgname = facefusion-cpu
 	pkgdesc = Industry leading face manipulation platform (CPU only)

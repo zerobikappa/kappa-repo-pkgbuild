@@ -28,16 +28,22 @@ options=(!debug)
 source=(
     "https://github.com/facefusion/facefusion/archive/refs/tags/${pkgver}.tar.gz"
     "facefusion.sh"
+    "facefusion-nsfw.patch"
 )
 sha256sums=(
     "1aad82aa7368ee032a649091e0e4fd5fefe1ff5d669c0964fc9491a70c02f23b"
     "bcd604f284e4d3053d3d3e9b771ba7ef776388df165f59e29cc5742d365afefb"
+    "46839d1f15517771e29afe75001d9bf62f0f769be3faad0dcc5425a655de8cc3"
 )
 #install="${pkgbase}-install"
 
 prepare() {
     rm -rf facefusion
     mv facefusion-"${pkgver}" facefusion
+    cd facefusion
+    patch --strip=1 --input=../facefusion-nsfw.patch
+    cd "${srcdir}"
+
     rm -rf facefusion/.github
 
     cat > facefusion_version << EOF

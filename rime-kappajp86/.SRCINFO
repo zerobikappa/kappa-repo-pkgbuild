@@ -5,6 +5,7 @@ pkgbase = rime-kappajp86
 	url = https://github.com/zerobikappa/rime-kappajp86
 	arch = any
 	license = unknow
+	makedepends = git
 	makedepends = librime
 	makedepends = rime-prelude
 	depends = opencc
