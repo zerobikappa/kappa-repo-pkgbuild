@@ -1,0 +1,14 @@
+pkgbase = rime-kappajp86
+	pkgdesc = rime-kappajp86 - Japan IME with Wubi86 schema.
+	pkgver = r25.6a89e0c
+	pkgrel = 1
+	url = https://github.com/zerobikappa/rime-kappajp86
+	arch = any
+	license = unknow
+	makedepends = librime
+	makedepends = rime-prelude
+	depends = opencc
+	source = git+https://github.com/zerobikappa/rime-kappajp86
+	md5sums = SKIP
+
+pkgname = rime-kappajp86
