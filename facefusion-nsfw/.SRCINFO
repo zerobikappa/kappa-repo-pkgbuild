@@ -1,4 +1,4 @@
-pkgbase = facefusion
+pkgbase = facefusion-nsfw
 	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/facefusion/facefusion
@@ -15,25 +15,32 @@ pkgbase = facefusion
 	sha256sums = bcd604f284e4d3053d3d3e9b771ba7ef776388df165f59e29cc5742d365afefb
 	sha256sums = 46839d1f15517771e29afe75001d9bf62f0f769be3faad0dcc5425a655de8cc3
 
-pkgname = facefusion-cpu
+pkgname = facefusion-nsfw-cpu
 	pkgdesc = Industry leading face manipulation platform (CPU only)
 	provides = facefusion=3.6.0
 	conflicts = facefusion
+	conflicts = facefusion-nsfw
 
-pkgname = facefusion-cuda
+pkgname = facefusion-nsfw-cuda
 	pkgdesc = Industry leading face manipulation platform (with CUDA)
 	provides = facefusion=3.6.0
 	conflicts = facefusion
+	conflicts = facefusion-nsfw
 	replaces = facefusion
+	replaces = facefusion-nsfw
 
-pkgname = facefusion-rocm
+pkgname = facefusion-nsfw-rocm
 	pkgdesc = Industry leading face manipulation platform (with ROCm)
 	provides = facefusion=3.6.0
 	conflicts = facefusion
+	conflicts = facefusion-nsfw
 	replaces = facefusion
+	replaces = facefusion-nsfw
 
-pkgname = facefusion-openvino
+pkgname = facefusion-nsfw-openvino
 	pkgdesc = Industry leading face manipulation platform (with OpenVINO)
 	provides = facefusion=3.6.0
 	conflicts = facefusion
+	conflicts = facefusion-nsfw
 	replaces = facefusion
+	replaces = facefusion-nsfw

@@ -4,7 +4,8 @@ declare -Ii FACEFUSION_INSTALL_SELECT
 _FACEFUSION_PYTHON_VERSION="3.12"
 _FACEFUSION_PIP_VERSION="25.0"
 
-pkgbase='facefusion'
+pkgbase='facefusion-nsfw'
+_pkgbase='facefusion'
 if [[ "$FACEFUSION_INSTALL_SELECT" =~ ^(cpu|cuda|rocm|openvino)$ ]]; then
     pkgname=("${pkgbase}"-"$FACEFUSION_INSTALL_SELECT")
 else
@@ -55,10 +56,10 @@ EOF
 
 #build() {}
 
-package_facefusion-cpu() {
+package_facefusion-nsfw-cpu() {
     pkgdesc="$_pkgdesc (CPU only)"
-    provides=("${pkgbase}=${pkgver}")
-    conflicts=("${pkgbase}")
+    provides=("${_pkgbase}=${pkgver}")
+    conflicts=("${_pkgbase}" "${pkgbase}")
 
     cd "${srcdir}"
     rm -rf facefusion-cpu
@@ -75,11 +76,11 @@ package_facefusion-cpu() {
 
 }
 
-package_facefusion-cuda() {
+package_facefusion-nsfw-cuda() {
     pkgdesc="$_pkgdesc (with CUDA)"
-    provides=("${pkgbase}=${pkgver}")
-    conflicts=("${pkgbase}")
-    replaces=("${pkgbase}")
+    provides=("${_pkgbase}=${pkgver}")
+    conflicts=("${_pkgbase}" "${pkgbase}")
+    replaces=("${_pkgbase}" "${pkgbase}")
 
     cd "${srcdir}"
     rm -rf facefusion-cuda
@@ -96,11 +97,11 @@ package_facefusion-cuda() {
 
 }
 
-package_facefusion-rocm() {
+package_facefusion-nsfw-rocm() {
     pkgdesc="$_pkgdesc (with ROCm)"
-    provides=("${pkgbase}=${pkgver}")
-    conflicts=("${pkgbase}")
-    replaces=("${pkgbase}")
+    provides=("${_pkgbase}=${pkgver}")
+    conflicts=("${_pkgbase}" "${pkgbase}")
+    replaces=("${_pkgbase}" "${pkgbase}")
 
     cd "${srcdir}"
     rm -rf facefusion-rocm
@@ -117,11 +118,11 @@ package_facefusion-rocm() {
 
 }
 
-package_facefusion-openvino() {
+package_facefusion-nsfw-openvino() {
     pkgdesc="$_pkgdesc (with OpenVINO)"
-    provides=("${pkgbase}=${pkgver}")
-    conflicts=("${pkgbase}")
-    replaces=("${pkgbase}")
+    provides=("${_pkgbase}=${pkgver}")
+    conflicts=("${_pkgbase}" "${pkgbase}")
+    replaces=("${_pkgbase}" "${pkgbase}")
 
     cd "${srcdir}"
     rm -rf facefusion-openvion
