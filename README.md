@@ -4,7 +4,7 @@ for Paru:
 ```bash
 mkdir -p ~/.config/paru
 
-cat > ~/.config/paru/paru.config << EOF
+cat > ~/.config/paru/paru.conf << EOF
 [kappa-repo]
 Url = https://github.com/zerobikappa/kappa-repo-pkgbuild.git
 EOF
