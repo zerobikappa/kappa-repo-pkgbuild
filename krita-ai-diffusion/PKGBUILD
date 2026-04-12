@@ -1,0 +1,36 @@
+# Maintainer: Mikata Riko <sanbikappa at qq dot com>
+# Contributor: Julian Reyes <contacto@julianreyes.co>
+# Contributor: Roald Clark <roaldclark@gmail.com>
+
+pkgname=krita-ai-diffusion
+pkgver=1.49.1
+pkgrel=1
+pkgdesc="A plugin to use generative AI in image painting and editing workflows from within Krita"
+arch=('any')
+url="https://github.com/Acly/krita-ai-diffusion"
+license=('GPL-3.0-or-later')
+depends=(
+    'krita'
+    'python-pyqt5'
+    'qt5-imageformats'
+)
+install=krita-ai-diffusion.install
+source=("${url}/releases/download/v${pkgver}/krita_ai_diffusion-${pkgver}.zip")
+sha256sums=('144ccec37e6c75ae445be0a86ea8dfdb0449988dc193d4ef97b8717a9df0b4f6')
+
+#prepare() {
+#}
+#
+#build() {
+#}
+#
+#check() {
+#}
+
+package() {
+    cd "${srcdir}"
+    mkdir -p "${pkgdir}"/usr/share/krita/actions/
+    mv ai_diffusion/ai_diffusion.action "${pkgdir}"/usr/share/krita/actions/
+    mkdir -p "${pkgdir}"/usr/share/krita/pykrita/
+    mv ai_diffusion ai_diffusion.desktop "${pkgdir}"/usr/share/krita/pykrita/
+}
