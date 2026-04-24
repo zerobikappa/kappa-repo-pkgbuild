@@ -17,7 +17,7 @@ else
     )
 fi
 
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 _pkgdesc="Industry leading face manipulation platform"
 arch=('x86_64')
@@ -32,9 +32,9 @@ source=(
     "facefusion-nsfw.patch"
 )
 sha256sums=(
-    "1aad82aa7368ee032a649091e0e4fd5fefe1ff5d669c0964fc9491a70c02f23b"
+    "4b1b8b40df8ec16ca86bd12ab548e2f0f0c892d009d25c74effc64846d352ea2"
     "bcd604f284e4d3053d3d3e9b771ba7ef776388df165f59e29cc5742d365afefb"
-    "46839d1f15517771e29afe75001d9bf62f0f769be3faad0dcc5425a655de8cc3"
+    "5c0bd508fb24d66a51d68a8d48e272fa8138d3aa1630595f3dff845ed70a8363"
 )
 #install="${pkgbase}-install"
 

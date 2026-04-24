@@ -1,5 +1,5 @@
 pkgbase = facefusion-nsfw
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://github.com/facefusion/facefusion
 	arch = x86_64
@@ -8,22 +8,22 @@ pkgbase = facefusion-nsfw
 	depends = miniconda3
 	depends = ffmpeg
 	options = !debug
-	source = https://github.com/facefusion/facefusion/archive/refs/tags/3.6.0.tar.gz
+	source = https://github.com/facefusion/facefusion/archive/refs/tags/3.6.1.tar.gz
 	source = facefusion.sh
 	source = facefusion-nsfw.patch
-	sha256sums = 1aad82aa7368ee032a649091e0e4fd5fefe1ff5d669c0964fc9491a70c02f23b
+	sha256sums = 4b1b8b40df8ec16ca86bd12ab548e2f0f0c892d009d25c74effc64846d352ea2
 	sha256sums = bcd604f284e4d3053d3d3e9b771ba7ef776388df165f59e29cc5742d365afefb
-	sha256sums = 46839d1f15517771e29afe75001d9bf62f0f769be3faad0dcc5425a655de8cc3
+	sha256sums = 5c0bd508fb24d66a51d68a8d48e272fa8138d3aa1630595f3dff845ed70a8363
 
 pkgname = facefusion-nsfw-cpu
 	pkgdesc = Industry leading face manipulation platform (CPU only)
-	provides = facefusion=3.6.0
+	provides = facefusion=3.6.1
 	conflicts = facefusion
 	conflicts = facefusion-nsfw
 
 pkgname = facefusion-nsfw-cuda
 	pkgdesc = Industry leading face manipulation platform (with CUDA)
-	provides = facefusion=3.6.0
+	provides = facefusion=3.6.1
 	conflicts = facefusion
 	conflicts = facefusion-nsfw
 	replaces = facefusion
@@ -31,7 +31,7 @@ pkgname = facefusion-nsfw-cuda
 
 pkgname = facefusion-nsfw-rocm
 	pkgdesc = Industry leading face manipulation platform (with ROCm)
-	provides = facefusion=3.6.0
+	provides = facefusion=3.6.1
 	conflicts = facefusion
 	conflicts = facefusion-nsfw
 	replaces = facefusion
@@ -39,7 +39,7 @@ pkgname = facefusion-nsfw-rocm
 
 pkgname = facefusion-nsfw-openvino
 	pkgdesc = Industry leading face manipulation platform (with OpenVINO)
-	provides = facefusion=3.6.0
+	provides = facefusion=3.6.1
 	conflicts = facefusion
 	conflicts = facefusion-nsfw
 	replaces = facefusion

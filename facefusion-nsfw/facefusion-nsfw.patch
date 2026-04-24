@@ -1,6 +1,6 @@
-diff -ura --color facefusion-3.6.0/facefusion/content_analyser.py facefusion-3.6.0.new/facefusion/content_analyser.py
---- facefusion-3.6.0/facefusion/content_analyser.py	2026-03-16 22:08:43.000000000 +0800
-+++ facefusion-3.6.0.new/facefusion/content_analyser.py	2026-04-05 12:52:40.906941812 +0800
+diff -ura facefusion-3.6.1/facefusion/content_analyser.py facefusion-3.6.1.new/facefusion/content_analyser.py
+--- facefusion-3.6.1/facefusion/content_analyser.py	2026-04-20 03:17:39.000000000 +0800
++++ facefusion-3.6.1.new/facefusion/content_analyser.py	2026-04-25 05:36:12.694984710 +0800
 @@ -190,33 +190,7 @@
  
  
@@ -36,9 +36,9 @@ diff -ura --color facefusion-3.6.0/facefusion/content_analyser.py facefusion-3.6
  
  def forward_nsfw(vision_frame : VisionFrame, model_name : str) -> Detection:
  	content_analyser = get_inference_pool().get(model_name)
-diff -ura --color facefusion-3.6.0/facefusion/core.py facefusion-3.6.0.new/facefusion/core.py
---- facefusion-3.6.0/facefusion/core.py	2026-03-16 22:08:43.000000000 +0800
-+++ facefusion-3.6.0.new/facefusion/core.py	2026-04-05 12:50:27.136189233 +0800
+diff -ura facefusion-3.6.1/facefusion/core.py facefusion-3.6.1.new/facefusion/core.py
+--- facefusion-3.6.1/facefusion/core.py	2026-04-20 03:17:39.000000000 +0800
++++ facefusion-3.6.1.new/facefusion/core.py	2026-04-25 05:35:56.557985742 +0800
 @@ -118,10 +118,7 @@
  		voice_extractor
  	]
