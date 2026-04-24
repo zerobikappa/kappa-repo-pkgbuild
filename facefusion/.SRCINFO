@@ -1,5 +1,5 @@
 pkgbase = facefusion
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://github.com/facefusion/facefusion
 	arch = x86_64
@@ -8,30 +8,30 @@ pkgbase = facefusion
 	depends = miniconda3
 	depends = ffmpeg
 	options = !debug
-	source = https://github.com/facefusion/facefusion/archive/refs/tags/3.6.0.tar.gz
+	source = https://github.com/facefusion/facefusion/archive/refs/tags/3.6.1.tar.gz
 	source = facefusion.sh
-	sha256sums = 1aad82aa7368ee032a649091e0e4fd5fefe1ff5d669c0964fc9491a70c02f23b
+	sha256sums = 4b1b8b40df8ec16ca86bd12ab548e2f0f0c892d009d25c74effc64846d352ea2
 	sha256sums = bcd604f284e4d3053d3d3e9b771ba7ef776388df165f59e29cc5742d365afefb
 
 pkgname = facefusion-cpu
 	pkgdesc = Industry leading face manipulation platform (CPU only)
-	provides = facefusion=3.6.0
+	provides = facefusion=3.6.1
 	conflicts = facefusion
 
 pkgname = facefusion-cuda
 	pkgdesc = Industry leading face manipulation platform (with CUDA)
-	provides = facefusion=3.6.0
+	provides = facefusion=3.6.1
 	conflicts = facefusion
 	replaces = facefusion
 
 pkgname = facefusion-rocm
 	pkgdesc = Industry leading face manipulation platform (with ROCm)
-	provides = facefusion=3.6.0
+	provides = facefusion=3.6.1
 	conflicts = facefusion
 	replaces = facefusion
 
 pkgname = facefusion-openvino
 	pkgdesc = Industry leading face manipulation platform (with OpenVINO)
-	provides = facefusion=3.6.0
+	provides = facefusion=3.6.1
 	conflicts = facefusion
 	replaces = facefusion
