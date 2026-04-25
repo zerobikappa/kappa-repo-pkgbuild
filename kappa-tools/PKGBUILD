@@ -1,0 +1,26 @@
+
+# Maintainer: Mikata Riko <sanbikappa@qq.com>
+
+pkgname='kappa-tools'
+pkgver=r2.2c178e4
+pkgrel=1
+pkgdesc="kappa's command tools"
+arch=('any')
+license=('unknow')
+url="https://github.com/zerobikappa/kappa-tools"
+makedepends=('git')
+source=("git+https://github.com/zerobikappa/kappa-tools")
+md5sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/kappa-tools"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+package() {
+    cd "$srcdir/kappa-tools"
+    mkdir -p "${pkgdir}/usr/bin"
+    cp bash-script/* "${pkgdir}/usr/bin"
+    chmod +x "${pkgdir}/usr/bin"/*
+
+}

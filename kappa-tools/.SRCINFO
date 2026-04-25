@@ -1,0 +1,12 @@
+pkgbase = kappa-tools
+	pkgdesc = kappa's command tools
+	pkgver = r2.2c178e4
+	pkgrel = 1
+	url = https://github.com/zerobikappa/kappa-tools
+	arch = any
+	license = unknow
+	makedepends = git
+	source = git+https://github.com/zerobikappa/kappa-tools
+	md5sums = SKIP
+
+pkgname = kappa-tools
