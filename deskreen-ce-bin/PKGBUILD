@@ -1,0 +1,58 @@
+# Maintainer: Mikata Riko <sanbikappa at qq dot com>
+# Contributor: Good Vibes <good_vibes@fastmail.com>
+
+pkgname=deskreen-ce-bin
+pkgver=3.2.14
+pkgrel=2
+pkgdesc='Turn any device into a secondary screen for your computer - Community Edition (binary release)'
+arch=('x86_64' 'aarch64')
+url='https://github.com/pavlobu/deskreen'
+license=('AGPL-3.0-only')
+provides=('deskreen-ce' 'deskreen')
+conflicts=('deskreen-ce' 'deskreen' 'deskreen-bin')
+source_x86_64=("deskreen-ce-$pkgver-amd64.deb::https://github.com/pavlobu/deskreen/releases/download/v$pkgver/deskreen-ce_${pkgver}_amd64.deb")
+source_aarch64=("deskreen-ce-$pkgver-arm64.deb::https://github.com/pavlobu/deskreen/releases/download/v$pkgver/deskreen-ce_${pkgver}_arm64.deb")
+b2sums_x86_64=('851254b8aa8c33abda392b03cb417dee0b40225cffbac2130ef4b079d15992203eb3bf2a35f4a183290fd09d71e372770df4eea507fe0212eac2c3b342ef3d8b')
+b2sums_aarch64=('3d54bb3f6bf33b5d84fa9254334c145058ca677982c6860e599905005b344b27a3de7c18a5e779b267b38e2bc5561fd8ea7dfaabb357019bb65bef57cb6a7397')
+
+prepare() {
+    cat > deskreen.xml << EOF
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <description>Deskreen turns any device with a web browser into a secondary screen for your computer.</description>
+  <port port="3131" protocol="tcp"/>
+</service>
+EOF
+}
+
+package() {
+    depends=('avahi'
+             'gtk3'
+             'libseccomp'
+             'nss'
+             'sqlite'
+             'systemd-libs')
+
+    bsdtar -xf data.tar.* -C "$srcdir/"
+
+    # Install app to /opt/deskreen-ce
+    install -d "$pkgdir/opt/deskreen-ce/"
+    cp -r "$srcdir/opt/Deskreen CE/"* "$pkgdir/opt/deskreen-ce/"
+
+    # Create symlink in /usr/bin
+    install -d "$pkgdir/usr/bin/"
+    ln -s "/opt/deskreen-ce/deskreen-ce" "$pkgdir/usr/bin/deskreen-ce"
+
+    # Install icon
+    install -Dm644 "$srcdir/usr/share/icons/hicolor/256x256/apps/deskreen-ce.png" \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/deskreen-ce.png"
+
+    # Install desktop file (modify to use our paths)
+    install -d "$pkgdir/usr/share/applications/"
+    sed -e 's|/opt/Deskreen CE/deskreen-ce|/usr/bin/deskreen-ce|g' \
+        "$srcdir/usr/share/applications/deskreen-ce.desktop" > "$pkgdir/usr/share/applications/deskreen-ce.desktop"
+    chmod 644 "$pkgdir/usr/share/applications/deskreen-ce.desktop"
+
+    # add firewalld service rule
+    install -Dm644 deskreen.xml "${pkgdir}/usr/lib/firewalld/services/deskreen.xml"
+}

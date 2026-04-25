@@ -50,7 +50,6 @@ EOF
 <?xml version="1.0" encoding="utf-8"?>
 <service>
   <port port="7860" protocol="tcp"/>
-  <port port="7860" protocol="udp"/>
 </service>
 EOF
 }
