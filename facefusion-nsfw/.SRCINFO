@@ -1,6 +1,6 @@
 pkgbase = facefusion-nsfw
 	pkgver = 3.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/facefusion/facefusion
 	arch = x86_64
 	license = custom

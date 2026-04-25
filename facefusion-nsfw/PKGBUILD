@@ -18,7 +18,7 @@ else
 fi
 
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 _pkgdesc="Industry leading face manipulation platform"
 arch=('x86_64')
 license=('custom')
@@ -52,6 +52,14 @@ FACEFUSION_INSTALL_VERSION=${pkgver}
 FACEFUSION_PYTHON_VERSION=${_FACEFUSION_PYTHON_VERSION}
 FACEFUSION_PIP_VERSION=${_FACEFUSION_PIP_VERSION}
 EOF
+
+    cat > facefusion.xml << EOF
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <port port="7860" protocol="tcp"/>
+  <port port="7860" protocol="udp"/>
+</service>
+EOF
 }
 
 #build() {}
@@ -73,6 +81,7 @@ package_facefusion-nsfw-cpu() {
     ln -s /opt/facefusion/facefusion.sh "${pkgdir}"/usr/bin/facefusion
     cp -r facefusion "${pkgdir}"/opt/facefusion/
     mv facefusion-cpu/* "${pkgdir}"/opt/facefusion/
+    install -Dm644 facefusion.xml "${pkgdir}/usr/lib/firewalld/services/facefusion.xml"
 
 }
 
@@ -94,6 +103,7 @@ package_facefusion-nsfw-cuda() {
     ln -s /opt/facefusion/facefusion.sh "${pkgdir}"/usr/bin/facefusion
     cp -r facefusion "${pkgdir}"/opt/facefusion/
     mv facefusion-cuda/* "${pkgdir}"/opt/facefusion/
+    install -Dm644 facefusion.xml "${pkgdir}/usr/lib/firewalld/services/facefusion.xml"
 
 }
 
@@ -115,6 +125,7 @@ package_facefusion-nsfw-rocm() {
     ln -s /opt/facefusion/facefusion.sh "${pkgdir}"/usr/bin/facefusion
     cp -r facefusion "${pkgdir}"/opt/facefusion/
     mv facefusion-rocm/* "${pkgdir}"/opt/facefusion/
+    install -Dm644 facefusion.xml "${pkgdir}/usr/lib/firewalld/services/facefusion.xml"
 
 }
 
@@ -136,5 +147,6 @@ package_facefusion-nsfw-openvino() {
     ln -s /opt/facefusion/facefusion.sh "${pkgdir}"/usr/bin/facefusion
     cp -r facefusion "${pkgdir}"/opt/facefusion/
     mv facefusion-openvion/* "${pkgdir}"/opt/facefusion/
+    install -Dm644 facefusion.xml "${pkgdir}/usr/lib/firewalld/services/facefusion.xml"
 
 }
